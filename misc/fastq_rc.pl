@@ -5,14 +5,16 @@
 
 use strict; use warnings;
 print'
-usage: <pl> <fq>
+usage: <fastq_to_fasta.pl> <inname.fastq> <outname.fastq>
+example: perl fastq_to_fasta.pl test.fastq test.rc.fastq
 reverse compliment fastq file
 ';
-die "err in cmd\n" unless @ARGV == 1;
-open (OUT, ">$ARGV[0].rc") or die "err output\n";
+die "err in cmd\n" unless @ARGV == 2;
+open (IN, "<$ARGV[0]") or die "err reading input\n";
+open (OUT, ">$ARGV[1]") or die "err writing output\n";
 
 my%fq;my$i = 0;my $fq_count;
-while(<>){
+while(<IN>){
 	$_ =~ s/\r//;
 	$_ =~ s/\n//;
 	if(/^@/){$i = 0}
@@ -30,7 +32,6 @@ while(<>){
 		%fq = ();
 		$fq_count++;
 	}
-	
 }
 
 print "there are $fq_count seqs in total\n\n"
