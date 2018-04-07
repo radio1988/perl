@@ -4,7 +4,7 @@
 #Email: liruiradiant+perl@gmail.com
 
 #this program input sam file,and output sam file containing polyA_site infomation
-#The fist base in the input is considered the polyA-site:TTTTTXXXXXXXXXXXXXXX
+#The fist base in the input is considered the polyA-site: TTTTTXXXXXXXXXXXXXXX assumed
 
 #designed for bwa-sam, gmap-samse also works
 #keep the first alignment if multiple alignment exists, but multi PAS for one read will be recorded in *2+
@@ -20,8 +20,8 @@ use READ_SAM;
 print"usage: <polyAsite_finder_from_sam.pl> <sam-file>\n";
 print"the out file is xxx.PAS.info\n";
 
-my$FirstExonCutoff = 16;#for the PAS on the first exon of a spliced mapping
-my$SimplicityCut = 0.8;#For the first exon
+my$FirstExonCutoff = 16;  #for the PAS on the first exon of a spliced mapping
+my$SimplicityCut = 0.8;  #For the first exon
 
 die "cmd err\n" unless @ARGV == 1;
 open(IN,"$ARGV[0]");
@@ -50,12 +50,12 @@ while (<IN>){
 			FirstExonSizeBigAndSeqComplex($sam{cigar},$FirstExonCutoff,$sam{flag},$sam{seq})
 		){
 			$read_collected{$sam{qname}} ++;
-			print OUT "$_\n";#print sam file 
-	#print "contain PolyAsite:$sam{cigar}\t$sam{seq}\n$sam{qname}\n";
+			print OUT "$_\n";  #print sam file 
+			# print "contain PolyAsite:$sam{cigar}\t$sam{seq}\n$sam{qname}\n";
 			if($read_collected{$sam{qname}} > 1){	#check for conflict
 				print MULTIMAP "$sam{qname},$sam{flag},$sam{rname},$sam{pos},$sam{mapq},$sam{cigar},$sam{mrnm},$sam{mpos},$sam{isize},$sam{seq},$sam{qual},$sam{opt}";}
 			else{
-				my$position = READ_SAM::LastMapSite(%sam);# different from positive match;
+				my$position = READ_SAM::LastMapSite(%sam); # different from positive match;
 				my$location = $sam{rname}."\t".$direction."\t"."$position";
 				$pos_count{$location}++;
 
