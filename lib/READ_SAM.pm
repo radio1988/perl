@@ -1,5 +1,7 @@
 package READ_SAM;
+
 use strict;use warnings;
+
 sub General{
 	#only parse one line
 	my $line = shift;

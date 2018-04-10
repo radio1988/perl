@@ -2,13 +2,20 @@
 WTTS-seq is very similar to PAS-seq 
 http://www.genetics.org/content/203/2/683
 
-# instructions
+# Demo Instructions:
+1. `perl ./polyAsite_finder_from_sam.pl sample_data/wtts_gsnap_sample.sam`
+2. `perl ./polyAsite_clustering.pl sample_data/wtts_sample.info.JGI_symbol 20`
+
+# Full pipeline (not all scripts cleaned and uploaded yet):
+* `sh pas_pipeline_from_sam.xt9.sh`
+
+# Descriptions
 1. `polyAsite_finder_from_sam.pl`: find polyA site from SAM (BWA/GSNAP/GMAP produced) file and save it in in-house `info` format
-   - usage: `perl polyAsite_finder_from_sam.pl sample_data/wtts_gsnap_sample.sam`
-   - if the alignment don't match criteria, polyA site will not be called
-   - `xxx.PAS.sam`: alignement contributed to polyA sites
-   - `xxx.NoPAS.sam`: alignment not matching calling polyA site criteria 
-   - `xxx.sam.PAS.info`: the output file, containing information about polyA sites
+  - usage: `perl polyAsite_finder_from_sam.pl sample_data/wtts_gsnap_sample.sam`
+  - if the alignment don't match criteria, polyA site will not be called
+  - `xxx.PAS.sam`: alignement contributed to polyA sites
+  - `xxx.NoPAS.sam`: alignment not matching calling polyA site criteria 
+  - `xxx.sam.PAS.info`: the output file, containing information about polyA sites
      - (ref dir pos count MaxRead cigar sam-pos sam-seq)
 
 2. `polyAsite_clustering.pl`: find clusters of polyA sites by single linkage clustering (if two polyA sites are close enough, they are clustered together)

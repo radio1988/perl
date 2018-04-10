@@ -1,6 +1,7 @@
 package READ_SYMBOL;
+
 #for *.JGI_symbol file in the PAS-Seq analysis
-#not finished
+
 sub SYMBOL{
         my$line = shift;
 	$line =~ s/[\r\n]//;
