@@ -10,10 +10,8 @@ http://www.genetics.org/content/203/2/683
     - find clusters of polyA sites by single linkage clustering. (if two polyA sites are close enough, they are clustered together, 20bp is the clustering distance here)
     - input: `sample_data/wtts_sample.info.JGI_symbol`, which is `info` file annotated with the help of cuffcompare and GTF/GFF genome annotation, with the help of some other scripts
     - output: 
-      - `wtts_sample.info.JGI_symbol.20clust`: detailed version 
-      - format: `cluster_index scaffold direction position range count class_code longest_read_id mapping_quality cigar longest_read_length read_sequence`
-      - `wtts_sample.info.JGI_symbol.20clust2`: annotated version 
-      - format: `cluster_index   scaffold        direction       position        range   count   class_code      gene_acc        gene_page       gene_symbol     gene_desc`
+      - `wtts_sample.info.JGI_symbol.20clust`: detailed version, format: `cluster_index scaffold direction position range count class_code longest_read_id mapping_quality cigar longest_read_length read_sequence`
+      - `wtts_sample.info.JGI_symbol.20clust2`: annotated version, format: `cluster_index   scaffold        direction       position        range   count   class_code      gene_acc        gene_page       gene_symbol     gene_desc`
       - `class_code`: cuffcompare positional relationship to annotated gene, `i: intron match, =: full match, etc `,  http://cole-trapnell-lab.github.io/cufflinks/cuffcompare/
 
 # Full pipeline (not all scripts cleaned and uploaded yet):
