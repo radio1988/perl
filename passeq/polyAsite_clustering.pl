@@ -10,8 +10,8 @@
 #	there can be a header of file(ref	dir)
 
 # Output: 
-#	xx.clust: summarised cluster info
-# 	xx.clust2: raw cluster info
+#	xx.clust: detailed cluster info
+# 	xx.clust2: annotated cluster info (most useful)
 #	xx.clust.err (for multiple gene_acc)
 
 # Function: 
