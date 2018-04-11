@@ -1,15 +1,20 @@
 #!/usr/bin/perl
-#Rui Li, Animal Sciences Department, Washington State University;
-#PhD student of Dr. Zhihua Jiang
-#Email: liruiradiant+perl@gmail.com
+# Rui Li, Animal Sciences Department, Washington State University;
+# PhD student of Dr. Zhihua Jiang
+# Email: liruiradiant+perl@gmail.com
 
-use strict; #use warnings;
+use strict; 
+use READ_SAM;
+
 print"
 2015-08-06
 sam-position + cigar => gff
 usage:<pl> <*.sam>
 output: *.sam.gtf
-warning of 'NM' missing for CLC_SAM file is fine, clc is using non-standardised sam file
+
+Note: 
+you can ignore warning of `NM missing` for CLC-SAM file, which is no-standard SAM
+The output for CLC-SAM will still be correct
 ";
 
 die "usage: <sam2gtf.pl> <sam>\n" unless @ARGV == 1;
@@ -18,7 +23,6 @@ open(IN,$ARGV[0]) or die;
 open(OUT,">$ARGV[0].gtf") or die;
 
 
-use READ_SAM;
 while(<IN>){
 	my%sam = READ_SAM::General($_);
 	if($sam{flag} == 4){next}

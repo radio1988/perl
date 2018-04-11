@@ -1,19 +1,22 @@
 #!/usr/bin/perl
-#Rui Li, Animal Sciences Department, Washington State University;
-#PhD student of Dr. Zhihua Jiang
-#Email: liruiradiant+perl@gmail.com
+# Rui Li, Animal Sciences Department, Washington State University;
+# PhD student of Dr. Zhihua Jiang
+# Email: liruiradiant+perl@gmail.com
 
-use strict; use warnings;
+use strict; 
+use warnings;
 use READ_GFF;
+
 print"
 input: Xenbase7.2.gff3
-output: gtf format for gtf_splicesites in gsnap
+output: gtf format (for gtf_splicesites in gsnap)
 
 usage:<pl> <*.gff3>
 2014-11-21
 ";
 
 die "cmd err\n" unless @ARGV == 1;
+
 open(IN,$ARGV[0]) or die "err reading\n";
 open(OUT,">$ARGV[0].gtf") or die "err outputing\n";
 
@@ -54,3 +57,5 @@ foreach(@in){
 	my$transcriptid = $pacid_2_transcriptid{ $gff{pacid} } ;
 	print OUT "$unchanged\tgene_id \"$geneid\";transcript_id \"$transcriptid\";\n";
 }
+
+print "\nConversion finished\n\n";
